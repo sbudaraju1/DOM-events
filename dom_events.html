@@ -1,0 +1,78 @@
+<html>
+	<head>
+		<title> Buttons </title>
+	
+	<body>
+		<font face="Courier New">
+		<h2 style="color: blue;"> Click the Buttons...</h2>
+		</font>
+		
+		<input type="button" value="red" id="red" onClick='redBackground()'>
+		<input type="button" value="yellow" id="yellow" onClick='yellowBackground()'>
+		<input type="button" value="green" id="green" onClick='greenBackground()'>
+		<input type="button" value="black" id="black" onClick='blackBackground()'>
+		<input type="button" value="random" id="random" onClick='randomBackground()'>
+		
+		<br>
+		<br>
+		
+		<font face="Courier New">
+		<h3 id="imageTitle"> Horror Characters</h3>
+		</font>
+		
+		<img src="horror.avif" id="horror">
+		<input type="button" value="next" id="next" onclick='nextImage()'>
+		
+		<script type="text/javascript">
+		
+		let picarray = [
+		{src: "art_the_clown.jpg", title: "Art the Clown"},
+		{src: "absolute_joker.png",title: "Absolute Joker"},
+		{src: "slenderman.jpg", title: "Slenderman"},
+		{src: "nun.avif", title: "The Nun"},
+		{src: "ghostface.jpg", title: "Ghost Face"}
+		];
+		
+		let picindex = 0; 
+		const colors = ["darkred", "gold", "forestgreen", "black"];
+		
+			function redBackground()
+			{
+				document.body.style.backgroundColor = "darkred";
+			}
+			
+			function yellowBackground()
+			{
+				document.body.style.backgroundColor = "gold";
+			}
+			
+			function greenBackground()
+			{
+				document.body.style.backgroundColor = "forestgreen";
+			}
+			
+			function blackBackground()
+			{
+				document.body.style.backgroundColor = "black";
+			}
+			
+			function randomBackground()
+			{
+				const randomIndex = Math.floor(Math.random() * colors.length);
+				document.body.style.backgroundColor = colors[randomIndex];
+			}
+			
+			function nextImage()
+			{
+				let horrorImg = document.getElementById("horror");
+				let imageTitle = document.getElementById("imageTitle");
+				
+				horrorImg.src = picarray[picindex].src;
+				imageTitle.textContent = picarray[picindex].title;
+				
+				picindex = (picindex + 1) % picarray.length;
+			}
+		
+		</script>
+	</body>
+</html>
